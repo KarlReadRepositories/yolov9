@@ -32,7 +32,13 @@ def process_mask_upsample(protos, masks_in, bboxes, shape):
 
     return: h, w, n
     """
-
+    print('DEBUGGING1')
+    print(protos)
+    print(type(protos))
+    print('DEBUGGING2')
+    for proto in protos:
+        print('DEBUGGING3')
+        print(proto.shape)
     c, mh, mw = protos.shape  # CHW
     masks = (masks_in @ protos.float().view(c, -1)).sigmoid().view(-1, mh, mw)
     masks = F.interpolate(masks[None], shape, mode='bilinear', align_corners=False)[0]  # CHW
