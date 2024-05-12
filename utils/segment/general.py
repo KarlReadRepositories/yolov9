@@ -51,11 +51,8 @@ def process_mask(protos, masks_in, bboxes, shape, upsample=False):
     return: h, w, n
     """
     print('DEBUGGING1')
-    print(protos)
-    print(type(protos))
-    print('DEBUGGING2')
     for proto in protos:
-        print('DEBUGGING3')
+        print('DEBUGGING2')
         print(proto.shape)
     c, mh, mw = protos.shape  # CHW
     ih, iw = shape
