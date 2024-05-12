@@ -50,10 +50,6 @@ def process_mask(protos, masks_in, bboxes, shape, upsample=False):
 
     return: h, w, n
     """
-    print('DEBUGGING1')
-    for proto in protos:
-        print('DEBUGGING2')
-        print(proto.shape)
     c, mh, mw = protos.shape  # CHW
     ih, iw = shape
     masks = (masks_in @ protos.float().view(c, -1)).sigmoid().view(-1, mh, mw)  # CHW
