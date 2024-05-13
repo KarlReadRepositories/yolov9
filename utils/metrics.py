@@ -39,9 +39,10 @@ def ap_per_class(tp, conf, pred_cls, target_cls, plot=False, save_dir='.', names
     print('entering function ap_per_class')
     print('tp:', tp)
     print('tp.shape:', tp.shape)
+    print('conf:', conf)
     print('conf.shape:', conf.shape)
     print('pred_cls.shape:', pred_cls.shape)
-    print('pred_cls.shape:', pred_cls.shape)
+    print('target_cls.shape:', target_cls.shape)
 
     # Sort by objectness
     i = np.argsort(-conf)
