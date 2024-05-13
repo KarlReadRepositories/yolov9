@@ -25,6 +25,7 @@ def ap_per_class_box_and_mask(
         tp_m: tp of masks.
         other arguments see `func: ap_per_class`.
     """
+    print('Box ap_per_class')
     results_boxes = ap_per_class(tp_b,
                                  conf,
                                  pred_cls,
@@ -33,6 +34,7 @@ def ap_per_class_box_and_mask(
                                  save_dir=save_dir,
                                  names=names,
                                  prefix="Box")[2:]
+    print('Mask ap_per_class')
     results_masks = ap_per_class(tp_m,
                                  conf,
                                  pred_cls,
