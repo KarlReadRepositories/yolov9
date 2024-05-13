@@ -25,7 +25,6 @@ def ap_per_class_box_and_mask(
         tp_m: tp of masks.
         other arguments see `func: ap_per_class`.
     """
-    print('Box ap_per_class')
     results_boxes = ap_per_class(tp_b,
                                  conf,
                                  pred_cls,
@@ -34,7 +33,6 @@ def ap_per_class_box_and_mask(
                                  save_dir=save_dir,
                                  names=names,
                                  prefix="Box")[2:]
-    print('Mask ap_per_class')
     results_masks = ap_per_class(tp_m,
                                  conf,
                                  pred_cls,
@@ -43,11 +41,6 @@ def ap_per_class_box_and_mask(
                                  save_dir=save_dir,
                                  names=names,
                                  prefix="Mask")[2:]
-    print('stats:')
-    print('tp_b.sum():', np.array(tp_b, dtype=np.uint8).sum())
-    print('tp_m.sum():', np.array(tp_m, dtype=np.uint8).sum())
-    print('tp_b and tp_m.sum():', np.array(np.logical_and(tp_b, tp_m), dtype=np.uint8).sum())
-    print('tp_b or tp_m.sum():', np.array(np.logical_or(tp_b, tp_m), dtype=np.uint8).sum())
 
     results = {
         "boxes": {

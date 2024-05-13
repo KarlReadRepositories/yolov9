@@ -157,6 +157,10 @@ def run(
                         # annotator.draw.polygon(segments[j], outline=colors(c, True), width=3)
                     if save_crop:
                         save_one_box(xyxy, imc, file=save_dir / 'crops' / names[c] / f'{p.stem}.jpg', BGR=True)
+            else:
+                if save_txt:  # Create empty file
+                    with open(f'{txt_path}.txt', 'a') as f:
+                        pass
 
             # Stream results
             im0 = annotator.result()
