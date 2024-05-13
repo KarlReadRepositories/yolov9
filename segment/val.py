@@ -75,6 +75,14 @@ def process_batch(detections, labels, iouv, pred_masks=None, gt_masks=None, over
     Returns:
         correct (array[N, 10]), for 10 IoU levels
     """
+    print(f'process_batch called')
+    print('detections.shape:', detections.shape)
+    print('labels.shape:', labels.shape)
+    print('iouv.shape:', iouv.shape)
+    if pred_masks is not None:
+        print('pred_masks.shape:', pred_masks.shape)
+        print('gt_masks.shape:', gt_masks.shape)
+    print(f'overlap: {overlap} masks: {masks}')
     if masks:
         if overlap:
             nl = len(labels)
@@ -269,6 +277,7 @@ def run(
             seen += 1
 
             if npr == 0:
+                print(f'no predictions for im {si}')
                 if nl:
                     stats.append((correct_masks, correct_bboxes, *torch.zeros((2, 0), device=device), labels[:, 0]))
                     if plots:
@@ -288,6 +297,7 @@ def run(
 
             # Evaluate
             if nl:
+                print(f'Calculating correct bbox and masks for im {si}')
                 tbox = xywh2xyxy(labels[:, 1:5])  # target boxes
                 scale_boxes(im[si].shape[1:], tbox, shape, shapes[si][1])  # native-space labels
                 labelsn = torch.cat((labels[:, 0:1], tbox), 1)  # native-space labels
